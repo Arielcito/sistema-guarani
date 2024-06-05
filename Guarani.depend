@@ -1,0 +1,73 @@
+# depslib dependency file v1.0
+1717592569 source:c:\users\serat\desktop\programacion\facu\guarani\cola.c
+	"cola.h"
+	<stddef.h>
+
+1717589096 source:c:\users\serat\desktop\programacion\facu\guarani\inscripto.c
+	"inscripto.h"
+	"lista.h"
+	"materiaCursada.h"
+
+1716991413 source:c:\users\serat\desktop\programacion\facu\guarani\lista.c
+	<stdbool.h>
+	"Lista.h"
+	"Util.h"
+	"Nodo.h"
+
+1716991234 c:\users\serat\desktop\programacion\facu\guarani\lista.h
+	<stdbool.h>
+	"Nodo.h"
+	"Util.h"
+
+1716991234 c:\users\serat\desktop\programacion\facu\guarani\nodo.h
+	<stdio.h>
+	<stdlib.h>
+
+1717592592 source:c:\users\serat\desktop\programacion\facu\guarani\materia.c
+	<string.h>
+	"materia.h"
+	"lista.h"
+	"cola.h"
+	"inscripto.h"
+
+1716991234 source:c:\users\serat\desktop\programacion\facu\guarani\nodo.c
+	<stdio.h>
+	<stdlib.h>
+	"Nodo.h"
+	"Util.h"
+
+1716991234 source:c:\users\serat\desktop\programacion\facu\guarani\utils.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Util.h"
+
+1717596064 source:c:\users\serat\desktop\programacion\facu\guarani\main.c
+	<stdio.h>
+	<stdlib.h>
+	"materia.h"
+	"lista.h"
+	"nodo.h"
+	"inscripto.h"
+	"materiaCursada.h"
+
+1717548277 c:\users\serat\desktop\programacion\facu\guarani\materia.h
+	"inscripto.h"
+	"lista.h"
+	"cola.h"
+
+1717589096 c:\users\serat\desktop\programacion\facu\guarani\inscripto.h
+	"materia.h"
+	"lista.h"
+
+1716991234 c:\users\serat\desktop\programacion\facu\guarani\util.h
+
+1717596064 c:\users\serat\desktop\programacion\facu\guarani\materiacursada.h
+	"materia.h"
+
+1717588442 source:c:\users\serat\desktop\programacion\facu\guarani\materiacursada.c
+	"materiaCursada.h"
+
+1717592569 c:\users\serat\desktop\programacion\facu\guarani\cola.h
+	"nodo.h"
+
