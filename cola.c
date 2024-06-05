@@ -44,11 +44,11 @@ void encolar(cola_t *cola, int dato)
     }
 }
 
-int desencolar(cola_t *cola)
+PtrNodo desencolar(cola_t *cola)
 {
     if (cola->primero)
     {
-        int dato_frente = cola->primero->dato;
+        PtrNodo dato_frente = cola->primero;
         PtrNodo aux = cola->primero;
         cola->primero = cola->primero->sgte;
 

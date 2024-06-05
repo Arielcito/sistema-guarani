@@ -9,6 +9,8 @@ typedef struct Inscripto
 {
     char nombre[50];
     int dni;
+    float promedio;
+    int cantidadMateriasAprobadas;
     PtrLista listaDeMaterias;
 }Inscripto;
 
@@ -22,6 +24,5 @@ void setDniInscripto(InscriptoPtr inscripto, int dni);
 char* getNombreInscripto(InscriptoPtr inscripto);
 int getDniInscripto(InscriptoPtr inscripto);
 
-int compararInscriptos(InscriptoPtr inscripto1, InscriptoPtr inscripto2);
 #endif // INSCRIPTO
 

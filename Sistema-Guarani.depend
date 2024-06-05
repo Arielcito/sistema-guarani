@@ -1,0 +1,73 @@
+# depslib dependency file v1.0
+1717625749 source:c:\users\user\desktop\ari\sistema-guarani\cola.c
+	"cola.h"
+	<stddef.h>
+
+1717625756 c:\users\user\desktop\ari\sistema-guarani\cola.h
+	"nodo.h"
+
+1717616418 c:\users\user\desktop\ari\sistema-guarani\nodo.h
+	<stdio.h>
+	<stdlib.h>
+
+1717625584 source:c:\users\user\desktop\ari\sistema-guarani\inscripto.c
+	"inscripto.h"
+	"lista.h"
+	"materiaCursada.h"
+
+1717617456 c:\users\user\desktop\ari\sistema-guarani\inscripto.h
+	"materia.h"
+	"lista.h"
+
+1717625190 c:\users\user\desktop\ari\sistema-guarani\materia.h
+	"inscripto.h"
+	"lista.h"
+	"cola.h"
+
+1717616418 c:\users\user\desktop\ari\sistema-guarani\lista.h
+	<stdbool.h>
+	"Nodo.h"
+	"Util.h"
+
+1717616418 c:\users\user\desktop\ari\sistema-guarani\util.h
+
+1717623875 c:\users\user\desktop\ari\sistema-guarani\materiacursada.h
+	"materia.h"
+
+1717616418 source:c:\users\user\desktop\ari\sistema-guarani\lista.c
+	<stdbool.h>
+	"Lista.h"
+	"Util.h"
+	"Nodo.h"
+
+1717625281 source:c:\users\user\desktop\ari\sistema-guarani\main.c
+	<stdio.h>
+	<stdlib.h>
+	"materia.h"
+	"lista.h"
+	"nodo.h"
+	"inscripto.h"
+	"materiaCursada.h"
+
+1717625835 source:c:\users\user\desktop\ari\sistema-guarani\materia.c
+	<string.h>
+	"materia.h"
+	"lista.h"
+	"cola.h"
+	"inscripto.h"
+
+1717616418 source:c:\users\user\desktop\ari\sistema-guarani\nodo.c
+	<stdio.h>
+	<stdlib.h>
+	"Nodo.h"
+	"Util.h"
+
+1717616418 source:c:\users\user\desktop\ari\sistema-guarani\utils.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Util.h"
+
+1717623864 source:c:\users\user\desktop\ari\sistema-guarani\materiacursada.c
+	"materiaCursada.h"
+

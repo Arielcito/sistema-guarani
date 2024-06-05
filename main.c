@@ -49,11 +49,15 @@ int main()
     setInscriptoMateria(materia,inscripto2);
     setInscriptoMateria(materia,inscripto3);
 
-    MateriaCursadaPtr materiaCursada = crearMateria(materia,8);
-    MateriaCursadaPtr materiaCursada2 = crearMateria(materia2,2);
+    MateriaCursadaPtr materiaCursada = crearMateria("Matematica",8);
+    MateriaCursadaPtr materiaCursada2 = crearMateria("Base de datos",2);
+    MateriaCursadaPtr materiaCursada3 = crearMateria("Matematica",8);
+    MateriaCursadaPtr materiaCursada4 = crearMateria("Base de datos",2);
 
     agregarMateriaAprobada(inscripto,materiaCursada);
     agregarMateriaAprobada(inscripto,materiaCursada2);
+    agregarMateriaAprobada(inscripto2,materiaCursada3);
+    agregarMateriaAprobada(inscripto3,materiaCursada4);
 
     mostrarMenu(listaMaterias,listaAlumnos);
 
@@ -74,7 +78,6 @@ void mostrarMenu(PtrLista listaMaterias, PtrLista listaAlumnos)
         printf("5. Mostrar Materias\n");
         printf("6. Mostrar Inscriptos en Materia\n");
         printf("7. Mostrar Inscriptos�n\n");
-
         printf("8. Salir\n");
         printf("\nIngrese una opci�n: ");
         scanf("%d", &opcion);
@@ -99,7 +102,6 @@ void mostrarMenu(PtrLista listaMaterias, PtrLista listaAlumnos)
         case 6:
             menuMostrarInscriptosEnMateria(listaMaterias);
             break;
-
         case 7:
             mostrarInscriptos(listaAlumnos);
             break;
@@ -156,7 +158,6 @@ void inscribirAlumno(PtrLista listaMaterias)
     }
     while (opcionMateria < 0 || opcionMateria > longitudLista(listaMaterias));
 
-    // Si la opción es válida, proceder con la inscripción
     if (opcionMateria > 0)
     {
         MateriaPtr materiaSeleccionada = (MateriaPtr) getDatoLista(listaMaterias, opcionMateria - 1);
@@ -276,6 +277,7 @@ void agregarMateriaAprobadaAlumno(PtrLista listaMaterias, PtrLista listaInscript
         materiaSeleccionada = (MateriaPtr) getDato(actual);
 
         agregarMateriaInscripto(listaInscriptos, materiaSeleccionada);
+
     }
     else
     {
@@ -335,8 +337,8 @@ void agregarMateriaInscripto(PtrLista listaInscriptos, MateriaPtr materia)
         scanf("%d",&nota);
 
 
-        agregarMateriaAprobada(inscriptoSeleccionado,crearMateria(materia,8));
-
+        agregarMateriaAprobada(inscriptoSeleccionado,crearMateria(getNombreMateria(materia),8));
+        calcularPromedio(inscriptoSeleccionado);
     }
     else
     {

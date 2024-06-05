@@ -16,7 +16,7 @@ MateriaPtr crearMateria(char *nombre, int cupo)
     return materia;
 }
 
-char* getNombreMateria(MateriaPtr materia)
+char *getNombreMateria(MateriaPtr materia)
 {
     return materia->nombre;
 }
@@ -33,7 +33,8 @@ int getCantidadInscripto(MateriaPtr materia)
     return tamanio;
 }
 
-PtrLista getListaInscriptosMateria(MateriaPtr materia){
+PtrLista getListaInscriptosMateria(MateriaPtr materia)
+{
     return materia->listaInscriptos;
 }
 void setInscriptoMateria(MateriaPtr materia, InscriptoPtr inscripto)
@@ -42,23 +43,28 @@ void setInscriptoMateria(MateriaPtr materia, InscriptoPtr inscripto)
     {
         agregarDatoLista(materia->listaInscriptos, inscripto);
         printf("\nInscripto agregado!");
-    }else{
-        encolar(materia->colaEspera,inscripto);
+    }
+    else
+    {
+        encolar(materia->colaEspera, inscripto);
 
         printf("\nInscripto a la cola de espera");
     }
 }
 
 
-void mostrarInscriptosMateria(MateriaPtr materia) {
-    if (longitudLista(materia->listaInscriptos) == 0) {
+void mostrarInscriptosMateria(MateriaPtr materia)
+{
+    if (longitudLista(materia->listaInscriptos) == 0)
+    {
         printf("\nNo hay inscriptos en la materia %s\n", materia->nombre);
         return;
     }
 
     printf("\nInscriptos en la lista de la materia %s:\n", materia->nombre);
     PtrNodo *actualLista = getPrimeroLista(materia->listaInscriptos);
-    while (actualLista) {
+    while (actualLista)
+    {
         InscriptoPtr inscriptoLista = (InscriptoPtr) getDato(actualLista);
         printf("\nNombre: %s", getNombreInscripto(inscriptoLista));
         printf("\nDNI: %d", getDniInscripto(inscriptoLista));
@@ -66,19 +72,22 @@ void mostrarInscriptosMateria(MateriaPtr materia) {
         actualLista = getSiguiente(actualLista);
     }
     cola_t *copiaCola = copiar_cola(materia->colaEspera);
-    if (cola_vacia(copiaCola)) {
+    if (cola_vacia(copiaCola))
+    {
         printf("\nNo hay inscriptos en la cola de espera de la materia %s\n", materia->nombre);
         return;
     }
 
     printf("\nInscriptos en la cola de espera de la materia %s:\n", materia->nombre);
 
-    while (!cola_vacia(copiaCola)) {
+    while (!cola_vacia(copiaCola))
+    {
         InscriptoPtr inscriptoCola = desencolar(copiaCola);
         printf("\nNombre: %s", getNombreInscripto(inscriptoCola));
         printf("\nDNI: %d", getDniInscripto(inscriptoCola));
     }
 }
+
 
 
 

@@ -1,16 +1,16 @@
 #include "materiaCursada.h"
 
-MateriaCursadaPtr crearMateriaCursada(MateriaPtr materia,int nota )
+MateriaCursadaPtr crearMateriaCursada(char *nombre,int nota )
 {
     MateriaCursadaPtr m = (MateriaCursadaPtr) malloc(sizeof(MateriaCursada));
 
-    m->materia = materia;
+    strncpy(m->nombreMateria,nombre, sizeof(m->nombreMateria));
     m->nota = nota;
     return m;
 }
 
-MateriaPtr getMateriaCursada(MateriaCursadaPtr m){
-    return m->materia;
+char *getMateriaCursada(MateriaCursadaPtr m){
+    return m->nombreMateria;
 }
 
 int getNotaMateriaCursada(MateriaCursadaPtr m){return m->nota;}

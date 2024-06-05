@@ -3,13 +3,13 @@
 #include "materia.h"
 
 typedef struct MateriaCursada {
-  MateriaPtr materia;
+  char nombreMateria[50];
   int nota;
 }MateriaCursada;
 
 typedef MateriaCursada * MateriaCursadaPtr;
 
-MateriaCursadaPtr crearMateriaCursada(MateriaPtr materia,int nota );
+MateriaCursadaPtr crearMateriaCursada(char *nombreMateria,int nota );
 void liberarMateriaCursada(MateriaCursadaPtr materia);
-MateriaPtr getMateriaCursada(MateriaCursadaPtr m);
+char *getMateriaCursada(MateriaCursadaPtr m);
 #endif //
