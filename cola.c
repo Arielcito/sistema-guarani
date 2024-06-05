@@ -1,92 +1,97 @@
-#include "cola.h"
-#include <stddef.h>
-cola_t *crear_cola()
+#include <stdbool.h>
+#include "Cola.h"
+#include "Util.h"
+const void* FinCola=NULL;
+PtrCola crearCola()
 {
-    cola_t *nueva_cola = malloc(sizeof(cola_t));
-    if (nueva_cola)
-    {
-        nueva_cola->primero = NULL;
-        nueva_cola->ultimo = NULL;
-    }
-    return nueva_cola;
+    PtrCola cola=(PtrCola)malloc(sizeof(Cola));
+    cola->primero=FinCola;
+    cola->ultimo=FinCola;
+    return cola;
 }
-
-void destruir_cola(cola_t *cola)
+PtrCola destruirCola(PtrCola cola)
 {
-    PtrNodo *aux;
-    while (cola->primero)
+// desencolamos cada uno de los nodos y los eliminamos. Si había
+// datos a eliminar, eso es responsabilidad del usuario
+    while(!colaVacia(cola))
     {
-        aux = cola->primero;
-        cola->primero = cola->primero->sgte;
-        free(aux);
+        desencolar(cola);
     }
     free(cola);
+    return NULL;
 }
-
-void encolar(cola_t *cola, int dato)
+bool colaVacia(PtrCola cola)
 {
-    PtrNodo nuevo_nodo = malloc(sizeof(PtrNodo));
-    if (nuevo_nodo)
+    return (cola->primero==FinCola);
+}
+int longitudCola(PtrCola cola)
+{
+// la longitud es cuantos nodos hay en la pila. Para saberlo, hay    que recorrerla
+    int longitud=0;
+    PtrNodo nodo=cola->primero;
+    while(nodo!=FinCola)
     {
-        nuevo_nodo->dato = dato;
-        nuevo_nodo->sgte     = NULL;
-
-        if (!cola->primero)
+        nodo=getSiguiente(nodo);
+        longitud++;
+    }
+    return longitud;
+}
+void encolar(PtrCola cola, PtrDato dato)
+{
+    if(cola!=NULL)
+    {
+        PtrNodo nodo=crearNodo(dato);
+        setDato(nodo,dato);
+        if(colaVacia(cola))
         {
-            cola->primero = nuevo_nodo;
+            cola->primero=nodo;
+            cola->ultimo=nodo;
         }
         else
         {
-            cola->ultimo->sgte = nuevo_nodo;
+            setSiguiente(cola->ultimo,nodo);
+            cola->ultimo=nodo;
         }
-
-        cola->ultimo = nuevo_nodo;
     }
 }
-
-PtrNodo desencolar(cola_t *cola)
+PtrDato desencolar(PtrCola cola)
 {
-    if (cola->primero)
+    PtrDato dato=NULL;
+    if(!colaVacia(cola))
     {
-        PtrNodo dato_frente = cola->primero;
-        PtrNodo aux = cola->primero;
-        cola->primero = cola->primero->sgte;
-
-        if (!cola->primero)
+        PtrNodo nodo=cola->primero;
+        cola->primero=getSiguiente(nodo);
+        dato=getDato(nodo);
+        if(cola->primero==FinCola)
         {
-            cola->ultimo = NULL;
+            cola->ultimo=FinCola;
         }
-
-        free(aux);
-        return dato_frente;
+        nodo=destruirNodo(nodo);
     }
-    else
-    {
-        return -1;
-    }
+    return dato;
 }
-
-int cola_vacia(cola_t *cola)
+PtrDato primeroCola(PtrCola cola)
 {
-    return cola->primero == NULL; // Retorna 1 si la cola está vacía, 0 si no
+// devuelve el dato de la primera posición de la cola
+// pero sin desencolarlo
+    PtrDato dato=NULL;
+    if(!colaVacia(cola))
+    {
+        PtrNodo nodo=cola->primero;
+        dato=getDato(nodo);
+    }
+    return dato;
 }
+PtrCola copiarCola(PtrCola cola) {
 
+    PtrCola copia = crearCola(); // Crear una nueva cola para la copia
 
-cola_t *copiar_cola(cola_t *cola_original) {
-    if (!cola_original) {
-        return NULL;
+    // Copiar elementos de la cola original a la copia
+    PtrNodo actual = cola->primero;
+    while (actual != NULL) {
+        encolar(copia, actual->dato); // Encolar el dato en la cola copia
+        actual = actual->sgte; // Avanzar al siguiente nodo
     }
 
-    cola_t *nueva_cola = crear_cola();
-    if (!nueva_cola) {
-        return NULL;
-    }
-
-    Nodo *actual = cola_original->primero;
-    while (actual) {
-        encolar(nueva_cola, actual->dato);
-        actual = actual->sgte;
-    }
-
-    return nueva_cola;
+    return copia;
 }

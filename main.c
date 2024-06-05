@@ -46,19 +46,20 @@ int main()
     agregarDatoLista(listaMaterias,materia3);
 
     setInscriptoMateria(materia,inscripto);
-    setInscriptoMateria(materia,inscripto2);
     setInscriptoMateria(materia,inscripto3);
+    setInscriptoMateria(materia,inscripto2);
 
     MateriaCursadaPtr materiaCursada = crearMateria("Matematica",8);
     MateriaCursadaPtr materiaCursada2 = crearMateria("Base de datos",2);
     MateriaCursadaPtr materiaCursada3 = crearMateria("Matematica",8);
     MateriaCursadaPtr materiaCursada4 = crearMateria("Base de datos",2);
+    MateriaCursadaPtr materiaCursada5 = crearMateria("Base de datos",10);
 
     agregarMateriaAprobada(inscripto,materiaCursada);
     agregarMateriaAprobada(inscripto,materiaCursada2);
     agregarMateriaAprobada(inscripto2,materiaCursada3);
     agregarMateriaAprobada(inscripto3,materiaCursada4);
-
+    agregarMateriaAprobada(inscripto3,materiaCursada5);
     mostrarMenu(listaMaterias,listaAlumnos);
 
     return 0;
@@ -112,7 +113,7 @@ void mostrarMenu(PtrLista listaMaterias, PtrLista listaAlumnos)
             printf("\nOpci�n inv�lida. Intente nuevamente.\n");
         }
     }
-    while (opcion != 6);
+    while (opcion != 8);
 }
 
 void agregarMateria(PtrLista listaMaterias)

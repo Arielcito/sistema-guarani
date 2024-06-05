@@ -1,10 +1,14 @@
 # depslib dependency file v1.0
-1717625749 source:c:\users\user\desktop\ari\sistema-guarani\cola.c
-	"cola.h"
-	<stddef.h>
+1717626373 source:c:\users\user\desktop\ari\sistema-guarani\cola.c
+	<stdbool.h>
+	"Cola.h"
+	"Util.h"
 
-1717625756 c:\users\user\desktop\ari\sistema-guarani\cola.h
-	"nodo.h"
+1717626181 c:\users\user\desktop\ari\sistema-guarani\cola.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	"Nodo.h"
 
 1717616418 c:\users\user\desktop\ari\sistema-guarani\nodo.h
 	<stdio.h>
@@ -19,7 +23,7 @@
 	"materia.h"
 	"lista.h"
 
-1717625190 c:\users\user\desktop\ari\sistema-guarani\materia.h
+1717626218 c:\users\user\desktop\ari\sistema-guarani\materia.h
 	"inscripto.h"
 	"lista.h"
 	"cola.h"
@@ -40,7 +44,7 @@
 	"Util.h"
 	"Nodo.h"
 
-1717625281 source:c:\users\user\desktop\ari\sistema-guarani\main.c
+1717626559 source:c:\users\user\desktop\ari\sistema-guarani\main.c
 	<stdio.h>
 	<stdlib.h>
 	"materia.h"
@@ -49,7 +53,7 @@
 	"inscripto.h"
 	"materiaCursada.h"
 
-1717625835 source:c:\users\user\desktop\ari\sistema-guarani\materia.c
+1717626959 source:c:\users\user\desktop\ari\sistema-guarani\materia.c
 	<string.h>
 	"materia.h"
 	"lista.h"

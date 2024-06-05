@@ -10,7 +10,7 @@ typedef struct Materia {
   char nombre[50];
   int cupo;
   PtrLista listaInscriptos;
-  cola_t* colaEspera;
+  PtrCola colaEspera;
 }Materia;
 
 typedef Materia * MateriaPtr;
@@ -26,7 +26,7 @@ int getCupoMateria(MateriaPtr materia);
 int getInscriptos(MateriaPtr materia);
 PtrLista getListaInscriptosMateria(MateriaPtr materia);
 
-cola_t getColaDeEspera(MateriaPtr materia);
+PtrCola getColaDeEspera(MateriaPtr materia);
 void agregarInscripto(MateriaPtr materia,PtrLista inscripto);
 void ordernarColaPrioridad(PtrLista lista);
 void mostrarMaterias();

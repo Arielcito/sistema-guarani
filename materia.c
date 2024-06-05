@@ -12,7 +12,7 @@ MateriaPtr crearMateria(char *nombre, int cupo)
     materia->cupo = cupo;
 
     materia->listaInscriptos = crearLista();
-    materia->colaEspera = crear_cola();
+    materia->colaEspera = crearCola();
     return materia;
 }
 
@@ -47,7 +47,7 @@ void setInscriptoMateria(MateriaPtr materia, InscriptoPtr inscripto)
     else
     {
         encolar(materia->colaEspera, inscripto);
-
+        desencolarYOrdenar(materia->colaEspera);
         printf("\nInscripto a la cola de espera");
     }
 }
@@ -71,8 +71,9 @@ void mostrarInscriptosMateria(MateriaPtr materia)
 
         actualLista = getSiguiente(actualLista);
     }
-    cola_t *copiaCola = copiar_cola(materia->colaEspera);
-    if (cola_vacia(copiaCola))
+    PtrCola copiaCola = crearCola();
+    copiaCola = materia->colaEspera;
+    if (colaVacia(copiaCola))
     {
         printf("\nNo hay inscriptos en la cola de espera de la materia %s\n", materia->nombre);
         return;
@@ -80,7 +81,7 @@ void mostrarInscriptosMateria(MateriaPtr materia)
 
     printf("\nInscriptos en la cola de espera de la materia %s:\n", materia->nombre);
 
-    while (!cola_vacia(copiaCola))
+    while (!colaVacia(copiaCola))
     {
         InscriptoPtr inscriptoCola = desencolar(copiaCola);
         printf("\nNombre: %s", getNombreInscripto(inscriptoCola));
@@ -88,6 +89,54 @@ void mostrarInscriptosMateria(MateriaPtr materia)
     }
 }
 
+void desencolarYOrdenar(PtrCola cola)
+{
+    PtrLista lista = crearLista();
+
+    while (!colaVacia(cola))
+    {
+        PtrDato elemento = desencolar(cola);
+        agregarDatoLista(lista, elemento);
+    }
+
+    ordernarLista(lista);
 
 
+    for (int i = 0; i < longitudLista(lista); i++)
+    {
+        PtrDato elemento = getDatoLista(lista, i);
+        encolar(cola, elemento);
+    }
+}
 
+
+void ordernarLista(PtrLista lista)
+{
+    PtrNodo pivote = NULL,actual = NULL;
+    int tmp;
+    if(listaVacia(lista))
+    {
+        pivote = getPrimeroLista(lista);
+        while(pivote != getUltimoLista(lista))
+        {
+            actual = getSiguiente(pivote);
+            while(actual != NULL)
+            {
+                if(getCantidadMaterias(getDato(pivote)) > getCantidadMaterias(getDato(actual)))
+                {
+                    tmp = getDato(pivote);
+                    setDato(pivote,getDato(actual));
+                    setDato(actual,tmp);
+
+                }
+                actual = getSiguiente(actual);
+            }
+            pivote = getSiguiente(pivote);
+        }
+
+    }
+    else
+    {
+        printf("Error lista no inicializada");
+    }
+}
